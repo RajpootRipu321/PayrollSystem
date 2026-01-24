@@ -9,7 +9,7 @@ public class SalaryDBTest {
 
     public static void main(String[] args) {
 
-        // ✅ Use an existing employee_id from employees table
+
         int employeeId = 1;
 
         double baseSalary = 30000;
@@ -30,7 +30,7 @@ public class SalaryDBTest {
                 netSalary
         );
 
-        // 🔥 SAVE SALARY TO DATABASE
+
         SalaryDAO dao = new SalaryDAOImpl();
         dao.addSalary(salary);
     }
