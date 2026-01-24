@@ -11,7 +11,7 @@ public class SwingBasics {
         frame.setSize(900, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
-        frame.setLayout(new BorderLayout()); // 🔥 key change
+        frame.setLayout(new BorderLayout()); 
 
 
         JPanel formPanel = new JPanel();
