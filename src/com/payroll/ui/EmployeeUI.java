@@ -11,17 +11,14 @@ import java.util.List;
 
 public class EmployeeUI extends JFrame {
 
-    // ---------- FORM FIELDS ----------
+
     private JTextField txtFirstName, txtLastName, txtDept, txtPosition, txtSalary;
 
-    // ---------- TABLE ----------
     private JTable table;
     private DefaultTableModel tableModel;
 
-    // ---------- DAO ----------
     private final EmployeeDAO employeeDAO = new EmployeeDAOImpl();
 
-    // ---------- SELECTED EMPLOYEE ----------
     private int selectedEmployeeId = -1;
 
     public EmployeeUI() {
@@ -32,7 +29,6 @@ public class EmployeeUI extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(new BorderLayout(10, 10));
 
-        // ================= FORM PANEL =================
         JPanel formPanel = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(8, 8, 8, 8);
@@ -46,7 +42,6 @@ public class EmployeeUI extends JFrame {
 
         int row = 0;
 
-        // ----------- INPUT ROWS -----------
         gbc.gridx = 0; gbc.gridy = row;
         formPanel.add(new JLabel("First Name"), gbc);
         gbc.gridx = 1;
@@ -72,20 +67,19 @@ public class EmployeeUI extends JFrame {
         gbc.gridx = 1;
         formPanel.add(txtSalary, gbc);
 
-        // ----------- BUTTONS -----------
         JButton btnAdd    = new JButton("Add Employee");
         JButton btnUpdate = new JButton("Update Employee");
         JButton btnClear  = new JButton("Clear");
         JButton btnDelete = new JButton("Delete Employee");
 
-        // DELETE (Full Width – Top Priority)
+
         gbc.gridx = 0;
         gbc.gridy = ++row;
         gbc.gridwidth = 2;
         formPanel.add(btnDelete, gbc);
         gbc.gridwidth = 1; // reset
 
-        // ADD + UPDATE (Same Row)
+
         gbc.gridx = 0;
         gbc.gridy = ++row;
         formPanel.add(btnAdd, gbc);
@@ -93,7 +87,7 @@ public class EmployeeUI extends JFrame {
         gbc.gridx = 1;
         formPanel.add(btnUpdate, gbc);
 
-        // CLEAR (Centered & Separate)
+
         gbc.gridx = 0;
         gbc.gridy = ++row;
         gbc.gridwidth = 2;
@@ -102,7 +96,7 @@ public class EmployeeUI extends JFrame {
 
         add(formPanel, BorderLayout.NORTH);
 
-        // ================= TABLE =================
+
         tableModel = new DefaultTableModel(
                 new String[]{"ID", "First Name", "Last Name", "Department", "Position", "Salary"}, 0
         );
@@ -111,7 +105,7 @@ public class EmployeeUI extends JFrame {
         table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         add(new JScrollPane(table), BorderLayout.CENTER);
 
-        // ================= TABLE CLICK =================
+
         table.getSelectionModel().addListSelectionListener(e -> {
             if (!e.getValueIsAdjusting() && table.getSelectedRow() != -1) {
 
@@ -126,7 +120,7 @@ public class EmployeeUI extends JFrame {
             }
         });
 
-        // ================= BUTTON ACTIONS =================
+
         btnAdd.addActionListener(e -> addEmployee());
         btnUpdate.addActionListener(e -> updateEmployee());
         btnClear.addActionListener(e -> clearForm());
@@ -135,7 +129,7 @@ public class EmployeeUI extends JFrame {
         loadEmployees();
     }
 
-    // ================= ADD =================
+
     private void addEmployee() {
         try {
             Employee emp = new Employee(
@@ -157,7 +151,7 @@ public class EmployeeUI extends JFrame {
         }
     }
 
-    // ================= UPDATE =================
+
     private void updateEmployee() {
         if (selectedEmployeeId == -1) {
             JOptionPane.showMessageDialog(this, "Please select an employee first");
@@ -185,7 +179,7 @@ public class EmployeeUI extends JFrame {
         }
     }
 
-    // ================= DELETE =================
+
     private void deleteEmployee() {
         if (selectedEmployeeId == -1) {
             JOptionPane.showMessageDialog(this, "Please select an employee first");
@@ -206,7 +200,7 @@ public class EmployeeUI extends JFrame {
         }
     }
 
-    // ================= LOAD =================
+
     private void loadEmployees() {
         tableModel.setRowCount(0);
         List<Employee> list = employeeDAO.getAllEmployees();
@@ -223,7 +217,7 @@ public class EmployeeUI extends JFrame {
         }
     }
 
-    // ================= CLEAR =================
+
     private void clearForm() {
         txtFirstName.setText("");
         txtLastName.setText("");
