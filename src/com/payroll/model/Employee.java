@@ -9,7 +9,7 @@ public class Employee {
     private String position;
     private double baseSalary;
 
-    // INSERT constructor
+
     public Employee(String firstName, String lastName,
                     String department, String position,
                     double baseSalary) {
@@ -21,7 +21,7 @@ public class Employee {
         this.baseSalary = baseSalary;
     }
 
-    // FETCH / UPDATE constructor
+
     public Employee(int employeeId, String firstName,
                     String lastName, String department,
                     String position, double baseSalary) {
