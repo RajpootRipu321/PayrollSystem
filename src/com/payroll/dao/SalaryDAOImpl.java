@@ -7,16 +7,10 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * SalaryDAOImpl
- * --------------
- * Handles salary table operations
- */
+
 public class SalaryDAOImpl implements SalaryDAO {
 
-    // =========================
-    // ADD SALARY
-    // =========================
+   
     @Override
     public void addSalary(Salary salary) {
 
@@ -40,9 +34,7 @@ public class SalaryDAOImpl implements SalaryDAO {
         }
     }
 
-    // =========================
-    // GET ALL SALARIES
-    // =========================
+   
     @Override
     public List<Salary> getAllSalaries() {
 
