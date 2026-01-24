@@ -13,7 +13,7 @@ public class SwingBasics {
         frame.setLocationRelativeTo(null);
         frame.setLayout(new BorderLayout()); // 🔥 key change
 
-        // 🔹 FORM PANEL (fixed size)
+
         JPanel formPanel = new JPanel();
         formPanel.setLayout(new GridLayout(2, 2, 10, 10));
         formPanel.setPreferredSize(new Dimension(350, 120));
@@ -28,7 +28,6 @@ public class SwingBasics {
         formPanel.add(new JLabel());
         formPanel.add(btnSubmit);
 
-        // 🔹 CENTER PANEL (keeps form centered)
         JPanel centerPanel = new JPanel(new GridBagLayout());
         centerPanel.add(formPanel);
 
